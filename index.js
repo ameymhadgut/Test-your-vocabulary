@@ -15,9 +15,9 @@ $(document).ready(function() {
     initMain(0);
     var config = {
         apiKey: "AIzaSyADPXX22pZe0PYPx17CiR2Pbdu2yTYb4lk",
-        authDomain: "wordservice-c164b.firebaseapp.com",
+        authDomain: "https://wordservice-c164b.firebaseapp.com",
         databaseURL: "https://wordservice-c164b.firebaseio.com",
-        storageBucket: "wordservice-c164b.appspot.com"
+        storageBucket: "https://wordservice-c164b.appspot.com"
       };
       firebase.initializeApp(config);
       const db = firebase.database();
