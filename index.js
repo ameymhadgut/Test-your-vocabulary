@@ -85,12 +85,14 @@ $(document).on("keypress", "input", function(e){
 });
 
 function onEnterWord(inputVal) {
-    words.push(inputVal);
     showWords(inputVal);
+    if(!words.includes(inputVal)) {
+    words.push(inputVal);
     if(inputVal.toLowerCase().startsWith(letter) && inputVal.length !=0 
     && wordlist.hasOwnProperty(inputVal.toLowerCase())){
         console.log('valid');
         score++;
+    }
     }
 }
 
@@ -100,7 +102,7 @@ function showWords(word) {
 }
 
 function startTimer() {
-    var timer = "30";
+    var timer = "31";
     var interval = setInterval(function() {
     var seconds = parseInt(timer, 10);
     --seconds;
