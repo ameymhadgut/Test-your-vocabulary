@@ -14,17 +14,17 @@ var wordlist;
 $(document).ready(function() { 
     initMain(0);
     var config = {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        storageBucket: ""
+        apiKey: "AIzaSyADPXX22pZe0PYPx17CiR2Pbdu2yTYb4lk",
+        authDomain: "wordservice-c164b.firebaseapp.com",
+        databaseURL: "https://wordservice-c164b.firebaseio.com",
+        storageBucket: "wordservice-c164b.appspot.com"
       };
       firebase.initializeApp(config);
       const db = firebase.database();
       console.log(db);
 
     $.ajax({
-        url: '',
+        url: 'https://wordservice-c164b.firebaseio.com/.json',
         dataType: "jsonp",
         jsonpCallback: "_getword",
         cache: false,
@@ -74,16 +74,21 @@ function initGame() {
 
 $(document).on("keypress", "input", function(e){
     if(e.which == 13){
-        var inputVal = $(this).val();
-        onEnterWord(inputVal);
-        $(this).val('');
+        var inputVal = $('#gameScreen').val();
+        console.log('amney1');
+        if(/^[a-z]+$/i.test(inputVal)) {
+            console.log('amney');
+            onEnterWord(inputVal);
+            $('#gameScreen').val('');
+        }
     }
 });
 
 function onEnterWord(inputVal) {
     words.push(inputVal);
     showWords(inputVal);
-    if(inputVal.toLowerCase().startsWith(letter) && wordlist.hasOwnProperty(inputVal.toLowerCase())){
+    if(inputVal.toLowerCase().startsWith(letter) && inputVal.length !=0 
+    && wordlist.hasOwnProperty(inputVal.toLowerCase())){
         console.log('valid');
         score++;
     }
